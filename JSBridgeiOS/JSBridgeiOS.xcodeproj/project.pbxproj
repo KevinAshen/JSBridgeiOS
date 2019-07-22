@@ -1,0 +1,584 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0412468F22E53A9A00541DD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412468E22E53A9A00541DD9 /* AppDelegate.m */; };
+		0412469222E53A9A00541DD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412469122E53A9A00541DD9 /* ViewController.m */; };
+		0412469522E53A9A00541DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0412469322E53A9A00541DD9 /* Main.storyboard */; };
+		0412469722E53A9C00541DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0412469622E53A9C00541DD9 /* Assets.xcassets */; };
+		0412469A22E53A9C00541DD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0412469822E53A9C00541DD9 /* LaunchScreen.storyboard */; };
+		0412469D22E53A9C00541DD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412469C22E53A9C00541DD9 /* main.m */; };
+		041246A722E53A9C00541DD9 /* JSBridgeiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 041246A622E53A9C00541DD9 /* JSBridgeiOSTests.m */; };
+		041246B222E53A9C00541DD9 /* JSBridgeiOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 041246B122E53A9C00541DD9 /* JSBridgeiOSUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		041246A322E53A9C00541DD9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0412468222E53A9A00541DD9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0412468922E53A9A00541DD9;
+			remoteInfo = JSBridgeiOS;
+		};
+		041246AE22E53A9C00541DD9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0412468222E53A9A00541DD9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0412468922E53A9A00541DD9;
+			remoteInfo = JSBridgeiOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0412468A22E53A9A00541DD9 /* JSBridgeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSBridgeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0412468D22E53A9A00541DD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0412468E22E53A9A00541DD9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0412469022E53A9A00541DD9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0412469122E53A9A00541DD9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0412469422E53A9A00541DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0412469622E53A9C00541DD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0412469922E53A9C00541DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0412469B22E53A9C00541DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0412469C22E53A9C00541DD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		041246A222E53A9C00541DD9 /* JSBridgeiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSBridgeiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		041246A622E53A9C00541DD9 /* JSBridgeiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBridgeiOSTests.m; sourceTree = "<group>"; };
+		041246A822E53A9C00541DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		041246AD22E53A9C00541DD9 /* JSBridgeiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSBridgeiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		041246B122E53A9C00541DD9 /* JSBridgeiOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBridgeiOSUITests.m; sourceTree = "<group>"; };
+		041246B322E53A9C00541DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0412468722E53A9A00541DD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0412469F22E53A9C00541DD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		041246AA22E53A9C00541DD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0412468122E53A9A00541DD9 = {
+			isa = PBXGroup;
+			children = (
+				0412468C22E53A9A00541DD9 /* JSBridgeiOS */,
+				041246A522E53A9C00541DD9 /* JSBridgeiOSTests */,
+				041246B022E53A9C00541DD9 /* JSBridgeiOSUITests */,
+				0412468B22E53A9A00541DD9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0412468B22E53A9A00541DD9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0412468A22E53A9A00541DD9 /* JSBridgeiOS.app */,
+				041246A222E53A9C00541DD9 /* JSBridgeiOSTests.xctest */,
+				041246AD22E53A9C00541DD9 /* JSBridgeiOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0412468C22E53A9A00541DD9 /* JSBridgeiOS */ = {
+			isa = PBXGroup;
+			children = (
+				0412468D22E53A9A00541DD9 /* AppDelegate.h */,
+				0412468E22E53A9A00541DD9 /* AppDelegate.m */,
+				0412469022E53A9A00541DD9 /* ViewController.h */,
+				0412469122E53A9A00541DD9 /* ViewController.m */,
+				0412469322E53A9A00541DD9 /* Main.storyboard */,
+				0412469622E53A9C00541DD9 /* Assets.xcassets */,
+				0412469822E53A9C00541DD9 /* LaunchScreen.storyboard */,
+				0412469B22E53A9C00541DD9 /* Info.plist */,
+				0412469C22E53A9C00541DD9 /* main.m */,
+			);
+			path = JSBridgeiOS;
+			sourceTree = "<group>";
+		};
+		041246A522E53A9C00541DD9 /* JSBridgeiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				041246A622E53A9C00541DD9 /* JSBridgeiOSTests.m */,
+				041246A822E53A9C00541DD9 /* Info.plist */,
+			);
+			path = JSBridgeiOSTests;
+			sourceTree = "<group>";
+		};
+		041246B022E53A9C00541DD9 /* JSBridgeiOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				041246B122E53A9C00541DD9 /* JSBridgeiOSUITests.m */,
+				041246B322E53A9C00541DD9 /* Info.plist */,
+			);
+			path = JSBridgeiOSUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0412468922E53A9A00541DD9 /* JSBridgeiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 041246B622E53A9C00541DD9 /* Build configuration list for PBXNativeTarget "JSBridgeiOS" */;
+			buildPhases = (
+				0412468622E53A9A00541DD9 /* Sources */,
+				0412468722E53A9A00541DD9 /* Frameworks */,
+				0412468822E53A9A00541DD9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JSBridgeiOS;
+			productName = JSBridgeiOS;
+			productReference = 0412468A22E53A9A00541DD9 /* JSBridgeiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		041246A122E53A9C00541DD9 /* JSBridgeiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 041246B922E53A9C00541DD9 /* Build configuration list for PBXNativeTarget "JSBridgeiOSTests" */;
+			buildPhases = (
+				0412469E22E53A9C00541DD9 /* Sources */,
+				0412469F22E53A9C00541DD9 /* Frameworks */,
+				041246A022E53A9C00541DD9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				041246A422E53A9C00541DD9 /* PBXTargetDependency */,
+			);
+			name = JSBridgeiOSTests;
+			productName = JSBridgeiOSTests;
+			productReference = 041246A222E53A9C00541DD9 /* JSBridgeiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		041246AC22E53A9C00541DD9 /* JSBridgeiOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 041246BC22E53A9C00541DD9 /* Build configuration list for PBXNativeTarget "JSBridgeiOSUITests" */;
+			buildPhases = (
+				041246A922E53A9C00541DD9 /* Sources */,
+				041246AA22E53A9C00541DD9 /* Frameworks */,
+				041246AB22E53A9C00541DD9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				041246AF22E53A9C00541DD9 /* PBXTargetDependency */,
+			);
+			name = JSBridgeiOSUITests;
+			productName = JSBridgeiOSUITests;
+			productReference = 041246AD22E53A9C00541DD9 /* JSBridgeiOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0412468222E53A9A00541DD9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "J&Z";
+				TargetAttributes = {
+					0412468922E53A9A00541DD9 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					041246A122E53A9C00541DD9 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 0412468922E53A9A00541DD9;
+					};
+					041246AC22E53A9C00541DD9 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 0412468922E53A9A00541DD9;
+					};
+				};
+			};
+			buildConfigurationList = 0412468522E53A9A00541DD9 /* Build configuration list for PBXProject "JSBridgeiOS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0412468122E53A9A00541DD9;
+			productRefGroup = 0412468B22E53A9A00541DD9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0412468922E53A9A00541DD9 /* JSBridgeiOS */,
+				041246A122E53A9C00541DD9 /* JSBridgeiOSTests */,
+				041246AC22E53A9C00541DD9 /* JSBridgeiOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0412468822E53A9A00541DD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0412469A22E53A9C00541DD9 /* LaunchScreen.storyboard in Resources */,
+				0412469722E53A9C00541DD9 /* Assets.xcassets in Resources */,
+				0412469522E53A9A00541DD9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		041246A022E53A9C00541DD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		041246AB22E53A9C00541DD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0412468622E53A9A00541DD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0412469222E53A9A00541DD9 /* ViewController.m in Sources */,
+				0412469D22E53A9C00541DD9 /* main.m in Sources */,
+				0412468F22E53A9A00541DD9 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0412469E22E53A9C00541DD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				041246A722E53A9C00541DD9 /* JSBridgeiOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		041246A922E53A9C00541DD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				041246B222E53A9C00541DD9 /* JSBridgeiOSUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		041246A422E53A9C00541DD9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0412468922E53A9A00541DD9 /* JSBridgeiOS */;
+			targetProxy = 041246A322E53A9C00541DD9 /* PBXContainerItemProxy */;
+		};
+		041246AF22E53A9C00541DD9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0412468922E53A9A00541DD9 /* JSBridgeiOS */;
+			targetProxy = 041246AE22E53A9C00541DD9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0412469322E53A9A00541DD9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0412469422E53A9A00541DD9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0412469822E53A9C00541DD9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0412469922E53A9C00541DD9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		041246B422E53A9C00541DD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		041246B522E53A9C00541DD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		041246B722E53A9C00541DD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94Q433PSKZ;
+				INFOPLIST_FILE = JSBridgeiOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "J-Z.JSBridgeiOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		041246B822E53A9C00541DD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94Q433PSKZ;
+				INFOPLIST_FILE = JSBridgeiOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "J-Z.JSBridgeiOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		041246BA22E53A9C00541DD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94Q433PSKZ;
+				INFOPLIST_FILE = JSBridgeiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "J-Z.JSBridgeiOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JSBridgeiOS.app/JSBridgeiOS";
+			};
+			name = Debug;
+		};
+		041246BB22E53A9C00541DD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94Q433PSKZ;
+				INFOPLIST_FILE = JSBridgeiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "J-Z.JSBridgeiOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JSBridgeiOS.app/JSBridgeiOS";
+			};
+			name = Release;
+		};
+		041246BD22E53A9C00541DD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94Q433PSKZ;
+				INFOPLIST_FILE = JSBridgeiOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "J-Z.JSBridgeiOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JSBridgeiOS;
+			};
+			name = Debug;
+		};
+		041246BE22E53A9C00541DD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94Q433PSKZ;
+				INFOPLIST_FILE = JSBridgeiOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "J-Z.JSBridgeiOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JSBridgeiOS;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0412468522E53A9A00541DD9 /* Build configuration list for PBXProject "JSBridgeiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				041246B422E53A9C00541DD9 /* Debug */,
+				041246B522E53A9C00541DD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		041246B622E53A9C00541DD9 /* Build configuration list for PBXNativeTarget "JSBridgeiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				041246B722E53A9C00541DD9 /* Debug */,
+				041246B822E53A9C00541DD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		041246B922E53A9C00541DD9 /* Build configuration list for PBXNativeTarget "JSBridgeiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				041246BA22E53A9C00541DD9 /* Debug */,
+				041246BB22E53A9C00541DD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		041246BC22E53A9C00541DD9 /* Build configuration list for PBXNativeTarget "JSBridgeiOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				041246BD22E53A9C00541DD9 /* Debug */,
+				041246BE22E53A9C00541DD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0412468222E53A9A00541DD9 /* Project object */;
+}
