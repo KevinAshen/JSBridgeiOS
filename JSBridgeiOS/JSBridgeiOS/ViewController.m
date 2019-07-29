@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "JKWTESTJSONModel.h"
 
 @interface ViewController ()
 
