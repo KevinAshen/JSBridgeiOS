@@ -37,7 +37,6 @@
 #endif
 
 
-
 // 创建初始化函数。等于用宏创建一个getter函数
 #define cJSBModuleTypeGet (___JSBModuleType == nil ? ___JSBModuleType = [[NSArray alloc] initWithObjects:\
 @"getSystemInfo",\

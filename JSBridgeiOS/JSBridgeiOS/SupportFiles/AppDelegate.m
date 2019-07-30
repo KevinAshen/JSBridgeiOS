@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "JSBViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] init];
+    [_window makeKeyAndVisible];
+    
+    JSBViewController *viewController = [[JSBViewController alloc] init];
+    _window.rootViewController = viewController;
+    
     return YES;
 }
 
