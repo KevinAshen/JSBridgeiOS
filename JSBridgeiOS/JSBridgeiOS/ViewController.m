@@ -8,7 +8,16 @@
 
 #import "ViewController.h"
 
+typedef NS_ENUM(NSInteger, JSBModuleType) {
+    getSystemInfo = 0,
+    showModal
+};
+
+const NSArray *___JSBModuleType;
+
 @interface ViewController ()
+
+@property (nonatomic, assign) NSInteger moduleType;
 
 @end
 
@@ -17,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _moduleType = cJSBModuleTypeEnum(@"showModal");
+    NSLog(@"%ld", _moduleType);
 }
 
 
