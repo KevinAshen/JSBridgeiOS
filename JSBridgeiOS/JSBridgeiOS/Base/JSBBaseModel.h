@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSBBaseModel : JSONModel
 
-@property (nonatomic, copy) NSString *typeStr;
-
-@property (nonatomic, copy) NSString *callBackIDStr;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *style;
+@property (nonatomic, copy) NSString *callbackId;
 
 @end
 
