@@ -10,10 +10,18 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <WebKit/WebKit.h>
 
+typedef NS_ENUM(NSInteger, JSBModuleType) {
+    getSystemInfo = 0,
+    showModal
+};
+
+const NSArray *___JSBModuleType;
+
 @interface JSBViewController ()
 ////<WKNavigationDelegate, WKScriptMessageHandler>
 
 @property (nonatomic,strong) WKWebView *webView;
+@property (nonatomic, assign) NSInteger moduleType;  //调取模块函数类型
 
 @end
 
