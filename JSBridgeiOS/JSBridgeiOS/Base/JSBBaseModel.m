@@ -11,8 +11,18 @@
 
 @implementation JSBBaseModel
 
-+ (JSONKeyMapper *)keyMapper {
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"typeStr":@"type", @"callBackIDStr":@"callBackID"}];
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self initializeModel];
+    }
+    return self;
+}
+
+//初始化方法
+- (void)initializeModel {
+    return;
 }
 
 +(BOOL)propertyIsOptional:(NSString *)propertyName {
