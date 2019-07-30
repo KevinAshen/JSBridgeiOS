@@ -36,6 +36,26 @@
 # define DLog(...);
 #endif
 
+enum JSBModuleType{
+    JSBSystemInfoType = 0,
+    JSBModalType
+};
+
+typedef enum JSBModuleType JSBModuleType;
+
+const NSArray *___JSBModuleType;
+
+// 创建初始化函数。等于用宏创建一个getter函数
+#define cJSBModuleTypeGet (___JSBModuleType == nil ? ___JSBModuleType = [[NSArray alloc] initWithObjects:\
+@"getSystemInfo",\
+@"showModal", nil] : ___JSBModuleType)
+
+// 枚举 to 字串
+#define cJSBModuleTypeString(type) ([cJSBModuleTypeGet objectAtIndex:type])
+
+// 字串 to 枚举
+#define cJSBModuleTypeEnum(string) ([cJSBModuleTypeGet indexOfObject:string])
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
