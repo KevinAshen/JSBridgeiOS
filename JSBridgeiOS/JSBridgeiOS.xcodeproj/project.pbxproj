@@ -22,6 +22,11 @@
 		04564D2B22F060650079F3F9 /* JSBModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04564D2A22F060650079F3F9 /* JSBModalView.m */; };
 		047185E422E88D6700733391 /* JSBBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047185E322E88D6700733391 /* JSBBaseModel.m */; };
 		CBA775144FEC72E1B15AC6FC /* libPods-JSBridgeiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D6305A6DAA6E98CAD73270 /* libPods-JSBridgeiOS.a */; };
+		D6AEDCEF22F071BC00053729 /* JSBSystemInfoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AEDCED22F071BC00053729 /* JSBSystemInfoUtil.m */; };
+		D6AEDCF122F073D900053729 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6AEDCF022F073D900053729 /* CoreLocation.framework */; };
+		D6AEDCF322F073E600053729 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6AEDCF222F073E600053729 /* CoreBluetooth.framework */; };
+		D6AEDCFC22F075A800053729 /* JSBBackSystemInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AEDCFB22F075A800053729 /* JSBBackSystemInfoModel.m */; };
+		D6AEDCFF22F078BC00053729 /* JSBRequestSystemInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AEDCFE22F078BC00053729 /* JSBRequestSystemInfoModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +79,14 @@
 		29D6305A6DAA6E98CAD73270 /* libPods-JSBridgeiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSBridgeiOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41BDD978912E69643F90202C /* Pods-JSBridgeiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSBridgeiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSBridgeiOS/Pods-JSBridgeiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		42514D03A02F8BEB1D5919D7 /* Pods-JSBridgeiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSBridgeiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSBridgeiOS/Pods-JSBridgeiOS.release.xcconfig"; sourceTree = "<group>"; };
+		D6AEDCED22F071BC00053729 /* JSBSystemInfoUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBSystemInfoUtil.m; sourceTree = "<group>"; };
+		D6AEDCEE22F071BC00053729 /* JSBSystemInfoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBSystemInfoUtil.h; sourceTree = "<group>"; };
+		D6AEDCF022F073D900053729 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D6AEDCF222F073E600053729 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		D6AEDCFA22F075A800053729 /* JSBBackSystemInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBBackSystemInfoModel.h; sourceTree = "<group>"; };
+		D6AEDCFB22F075A800053729 /* JSBBackSystemInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBBackSystemInfoModel.m; sourceTree = "<group>"; };
+		D6AEDCFD22F078BC00053729 /* JSBRequestSystemInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBRequestSystemInfoModel.h; sourceTree = "<group>"; };
+		D6AEDCFE22F078BC00053729 /* JSBRequestSystemInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBRequestSystemInfoModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6AEDCF322F073E600053729 /* CoreBluetooth.framework in Frameworks */,
+				D6AEDCF122F073D900053729 /* CoreLocation.framework in Frameworks */,
 				CBA775144FEC72E1B15AC6FC /* libPods-JSBridgeiOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +142,7 @@
 		0412468C22E53A9A00541DD9 /* JSBridgeiOS */ = {
 			isa = PBXGroup;
 			children = (
+				D6AEDCE822F0709C00053729 /* modules */,
 				0412469B22E53A9C00541DD9 /* Info.plist */,
 				04564D1F22F03F890079F3F9 /* JSBViewController.h */,
 				04564D2022F03F890079F3F9 /* JSBViewController.m */,
@@ -206,6 +222,8 @@
 		218D182B0B8EDEB21F668F3D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D6AEDCF222F073E600053729 /* CoreBluetooth.framework */,
+				D6AEDCF022F073D900053729 /* CoreLocation.framework */,
 				29D6305A6DAA6E98CAD73270 /* libPods-JSBridgeiOS.a */,
 			);
 			name = Frameworks;
@@ -218,6 +236,27 @@
 				42514D03A02F8BEB1D5919D7 /* Pods-JSBridgeiOS.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D6AEDCE822F0709C00053729 /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				D6AEDCE922F070DF00053729 /* getSystemInfo */,
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
+		D6AEDCE922F070DF00053729 /* getSystemInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D6AEDCEE22F071BC00053729 /* JSBSystemInfoUtil.h */,
+				D6AEDCED22F071BC00053729 /* JSBSystemInfoUtil.m */,
+				D6AEDCFA22F075A800053729 /* JSBBackSystemInfoModel.h */,
+				D6AEDCFB22F075A800053729 /* JSBBackSystemInfoModel.m */,
+				D6AEDCFD22F078BC00053729 /* JSBRequestSystemInfoModel.h */,
+				D6AEDCFE22F078BC00053729 /* JSBRequestSystemInfoModel.m */,
+			);
+			path = getSystemInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +415,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6AEDCFF22F078BC00053729 /* JSBRequestSystemInfoModel.m in Sources */,
+				D6AEDCEF22F071BC00053729 /* JSBSystemInfoUtil.m in Sources */,
 				04564D2122F03F890079F3F9 /* JSBViewController.m in Sources */,
 				04564D2522F060320079F3F9 /* JSBRequestModalModel.m in Sources */,
 				04564D2B22F060650079F3F9 /* JSBModalView.m in Sources */,
@@ -383,6 +424,7 @@
 				04564D1A22F03CA00079F3F9 /* JSBBaseView.m in Sources */,
 				04564D2822F060400079F3F9 /* JSBBackModalModel.m in Sources */,
 				0412469D22E53A9C00541DD9 /* main.m in Sources */,
+				D6AEDCFC22F075A800053729 /* JSBBackSystemInfoModel.m in Sources */,
 				0412468F22E53A9A00541DD9 /* AppDelegate.m in Sources */,
 				04564D1E22F03E000079F3F9 /* UIColor+Tool.m in Sources */,
 			);
