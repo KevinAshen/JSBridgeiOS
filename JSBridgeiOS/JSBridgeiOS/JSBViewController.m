@@ -7,6 +7,10 @@
 //
 
 #import "JSBViewController.h"
+#import "JSBRequestModalModel.h"
+#import "JSBBackMessageModalModel.h"
+#import "JSBModalView.h"
+#import "JSBBaseModel.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <WebKit/WebKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
@@ -25,6 +29,10 @@ const NSArray *___JSBModuleType;
 
 @property (nonatomic,strong) WKWebView *webView;
 @property (nonatomic, assign) NSInteger moduleType;  //调取模块函数类型
+@property (nonatomic, copy) NSString *backPartStr;
+//返回给前端的字符串，包括callbackId以及style
+@property (nonatomic, copy) NSString *backStr;
+//返回给前端所有字符串，包括callbackId, style, message
 
 ///systemInfo模块
 @property (nonatomic, strong) CBCentralManager *bluetoothManager; //蓝牙控制器
@@ -72,6 +80,7 @@ const NSArray *___JSBModuleType;
     [self.webView loadRequest:[NSURLRequest requestWithURL:path]];
 }
 
+
 ///getSystemInfo模块
 - (void)getSystemInfoWithModel:(JSBRequestSystemInfoModel *)model{
     JSBSystemInfoUtil *utils = [JSBSystemInfoUtil new];
@@ -100,7 +109,8 @@ const NSArray *___JSBModuleType;
     ///获取调用模块类型
     NSDictionary *messageDic = (NSDictionary *)message.body;
     NSString *typeStr = [messageDic objectForKey:@"type"];
-
+    NSString *callBackIDStr = [messageDic objectForKey:@"callbackId"];
+    self.backPartStr = [NSString stringWithFormat:@"callbackId:'%@',style:%@,", callBackIDStr, @"1"];
     if ([message.name isEqualToString:@"JSObject"]) {
         if ([message.name isEqualToString:@"JSObject"]) {
             switch (cJSBModuleTypeEnum(typeStr)) {
@@ -112,11 +122,13 @@ const NSArray *___JSBModuleType;
                     DLog(@"%@", systemInfoDic);
                     break;
                 }
+                case showModal:
+                    [self showModal:messageDic];
             }
         }
-//        NSDictionary *resDic = (NSDictionary *)message.body
-//        JSBRequestSystemInfoModel *requestSystemInfoModel = [[JSBRequestSystemInfoModel alloc] initWithDictionary:messageDic error:nil];
     }
+    
+    
 }
 
 //第一次打开调用这个函数( 蓝牙控制)
@@ -130,5 +142,56 @@ const NSArray *___JSBModuleType;
     }
 }
 
+- (void)showModal:(NSDictionary *)modalDic {
+    NSDictionary *dataDic = [modalDic objectForKey:@"data"];
+    JSBRequestModalModel *requestModalModel = [[JSBRequestModalModel alloc] initWithDictionary:dataDic error:nil];
+    
+    UIView *bounceView = [[UIView alloc] initWithFrame:self.view.frame];
+    [_webView addSubview:bounceView];
+    
+    bounceView.backgroundColor = [UIColor colorWithRed:0.49f green:0.49f blue:0.49f alpha:1.00f];
+    modalViewStyle style;
+    if (requestModalModel.showCancel == 1) {
+        style  = viewWithCancel;
+    } else {
+        style = viewWithoutCancel;
+    }
+    
+    JSBModalView *modelView = [[JSBModalView alloc] initWithStyle:style];
+    [bounceView addSubview:modelView];
+    
+    [modelView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(bounceView.mas_left).offset(50);
+        make.centerX.mas_equalTo(bounceView.mas_centerX);
+        make.top.equalTo(bounceView.mas_top).offset(335);
+        make.centerY.mas_equalTo(bounceView.mas_centerY);
+    }];
+    
+    [modelView reloadViewWithData:requestModalModel];
+    
+    modelView.buttonAction = ^(NSInteger tag) {
+        NSString *tagStr = @"JKWWSWSWWS";
+        if (tag == 0) {
+            tagStr = @"true";
+        } else {
+            tagStr = @"false";
+        }
+        
+        JSBBackMessageModalModel *backMessageModalModel = [[JSBBackMessageModalModel alloc] init];
+        backMessageModalModel.confirm = tagStr;
+        backMessageModalModel.cancel = @"false";
+        [self toJSCallBackStr:backMessageModalModel];
+        
+        [self.webView evaluateJavaScript:self->_backStr completionHandler:^(id _Nullable item, NSError * _Nullable error) {
+            [modelView removeFromSuperview];
+            [bounceView removeFromSuperview];
+        }];
+    };
+}
+
+- (void)toJSCallBackStr:(id)model {
+    NSString *tmpStr = [(JSBBaseModel *)model toJSONString];
+    self.backStr = [NSString stringWithFormat:@"jsCallBack({%@message:%@})", _backPartStr, tmpStr];
+}
 
 @end
