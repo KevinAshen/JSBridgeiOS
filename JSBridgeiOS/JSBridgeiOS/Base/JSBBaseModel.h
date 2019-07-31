@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *style;
 @property (nonatomic, copy) NSString *callbackId;
+@property (nonatomic, copy) NSDictionary *message;
+@property (nonatomic, strong, nullable) NSDictionary *data;
 
 @end
 
