@@ -8,9 +8,20 @@
 
 #import "JSBBaseView.h"
 
+typedef NS_ENUM(NSInteger, modalViewStyle) {
+    viewWithoutCancel,
+    viewWithCancel
+};
+
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSBModalView : JSBBaseView
+
+typedef void(^ButtonClick)(NSInteger tag);
+@property (nonatomic, copy) ButtonClick buttonAction;
+
+- (instancetype)initWithStyle:(modalViewStyle)style;
 
 @end
 

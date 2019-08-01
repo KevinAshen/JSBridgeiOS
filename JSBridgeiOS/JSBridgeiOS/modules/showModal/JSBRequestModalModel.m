@@ -10,4 +10,12 @@
 
 @implementation JSBRequestModalModel
 
+- (void)initializeModel {
+    self.showCancel = true;
+    self.cancelText = @"取消";
+    self.cancelColor = @"#000000";
+    self.confirmText = @"确定";
+    self.confirmColor = @"#578B95";
+}
+
 @end
