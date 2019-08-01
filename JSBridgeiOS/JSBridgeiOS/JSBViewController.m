@@ -52,7 +52,7 @@ const NSArray *___JSBModuleType;
     ///getSystemInfo模块
     self.bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     self.backSystemInfoModel = [[JSBBackSystemInfoModel alloc] init];
-//    self.backSystemInfoModel.message = [[JSBBackSystemInfoMessageModel alloc] init];
+    self.backSystemInfoModel.message = [[JSBBackSystemInfoMessageModel alloc] init];
 }
 
 //初始化WKWebView
@@ -76,25 +76,26 @@ const NSArray *___JSBModuleType;
     
     [self.view addSubview:self.webView];
     
-    NSURL *path = [NSURL URLWithString:@"https://www.konghouy.cn/H5-app/iOS.html#/"];
+    NSURL *path = [NSURL URLWithString:@"https://www.konghouy.cn/H5-app/#/"];
     [self.webView loadRequest:[NSURLRequest requestWithURL:path]];
 }
 
 
 ///getSystemInfo模块
-- (void)getSystemInfoWithModel:(JSBRequestSystemInfoModel *)model{
+- (void)getSystemInfoWithDictionary:(NSDictionary *)messageDic{
+    JSBRequestSystemInfoModel *requestSystemInfoModel = [[JSBRequestSystemInfoModel alloc] initWithDictionary:messageDic error:nil];
     JSBSystemInfoUtil *utils = [JSBSystemInfoUtil new];
     self.backSystemInfoModel.style = @"1";
-    self.backSystemInfoModel.callbackId = model.callbackId;
-    self.backSystemInfoModel.message.brand = @"iPhone";
-    self.backSystemInfoModel.message.model = [JSBSystemInfoUtil getDeviceName];
+    self.backSystemInfoModel.callbackId = [NSString stringWithFormat:@"'%@'", requestSystemInfoModel.callbackId];
+    self.backSystemInfoModel.message.brand = @"'iPhone'";
+    self.backSystemInfoModel.message.model = [NSString stringWithFormat:@"'%@'", [JSBSystemInfoUtil getDeviceName]];
     self.backSystemInfoModel.message.pixelRatio = [JSBSystemInfoUtil getPixelScale];
     self.backSystemInfoModel.message.screenWidth = [JSBSystemInfoUtil getDeviceScreenWidth];
     self.backSystemInfoModel.message.screenHeight = [JSBSystemInfoUtil getDeviceScreenHeight];
     self.backSystemInfoModel.message.windowWidth = _webView.frame.size.width;
     self.backSystemInfoModel.message.windowHeight = _webView.frame.size.height;
-    self.backSystemInfoModel.message.language = [JSBSystemInfoUtil getDeviceLanguage];
-    self.backSystemInfoModel.message.system = [JSBSystemInfoUtil getSystemVersion];
+    self.backSystemInfoModel.message.language = [NSString stringWithFormat:@"'%@'", [JSBSystemInfoUtil getDeviceLanguage]];
+    self.backSystemInfoModel.message.system = [NSString stringWithFormat:@"'%@'", [JSBSystemInfoUtil getSystemVersion]];
     self.backSystemInfoModel.message.statusBarHeight = 20;
     self.backSystemInfoModel.message.albumAuthorized = [JSBSystemInfoUtil getPhotoLibrary];
     self.backSystemInfoModel.message.cameraAuthorized = [JSBSystemInfoUtil getCamera];
@@ -103,6 +104,11 @@ const NSArray *___JSBModuleType;
     self.backSystemInfoModel.message.notificationAuthorized = [utils checkCurrentNotificationStatus];
     self.backSystemInfoModel.message.locationEnabled = [JSBSystemInfoUtil getGPSEnabled];
     self.backSystemInfoModel.message.wifiEnabled = [JSBSystemInfoUtil getWiFiEnabled];
+    
+    NSString *backStr = [self.backSystemInfoModel toJSONString];
+    [self.webView evaluateJavaScript:backStr completionHandler:^(id _Nullable item, NSError * _Nullable error) {
+        DLog(@"%@", backStr);
+    }];
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
@@ -110,13 +116,13 @@ const NSArray *___JSBModuleType;
     NSDictionary *messageDic = (NSDictionary *)message.body;
     NSString *typeStr = [messageDic objectForKey:@"type"];
     NSString *callBackIDStr = [messageDic objectForKey:@"callbackId"];
+    DLog(@"%@", typeStr);
     self.backPartStr = [NSString stringWithFormat:@"callbackId:'%@',style:%@,", callBackIDStr, @"1"];
     if ([message.name isEqualToString:@"JSObject"]) {
         if ([message.name isEqualToString:@"JSObject"]) {
             switch (cJSBModuleTypeEnum(typeStr)) {
                 case getSystemInfo: {
-                    JSBRequestSystemInfoModel *requestSystemInfoModel = [[JSBRequestSystemInfoModel alloc] initWithDictionary:messageDic error:nil];
-                    [self getSystemInfoWithModel:requestSystemInfoModel];
+                    [self getSystemInfoWithDictionary:messageDic];
                     NSDictionary *systemInfoDic = [_backSystemInfoModel toDictionary];
 //                    NSString *str = [_backSystemInfoModel toJSONString];
                     DLog(@"%@", systemInfoDic);
@@ -127,8 +133,6 @@ const NSArray *___JSBModuleType;
             }
         }
     }
-    
-    
 }
 
 //第一次打开调用这个函数( 蓝牙控制)
