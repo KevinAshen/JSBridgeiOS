@@ -1,8 +1,8 @@
 //
-//  JSBBackMessageModalModel.h
+//  JSBBackModalModel.h
 //  JSBridgeiOS
 //
-//  Created by Kevin.J on 2019/7/31.
+//  Created by Kevin.J on 2019/8/1.
 //  Copyright © 2019 J&Z. All rights reserved.
 //
 
@@ -14,6 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *confirm;
 @property (nonatomic, copy) NSString *cancel;
+
+@end
+
+@interface JSBBackModalModel : JSBBaseModel
+
+@property (nonatomic, strong) JSBBackMessageModalModel *message;
 
 @end
 
