@@ -50,7 +50,6 @@ const NSArray *___JSBModuleType;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     //给backStr赋初值，方便KVO的调用
     self.backStr = @"JKWWSWSWWS";
     
@@ -185,9 +184,9 @@ const NSArray *___JSBModuleType;
     _modalView.buttonAction = ^(NSInteger tag) {
         NSString *tagStr = @"JKWWSWSWWS";
         if (tag == 0) {
-            tagStr = @"true";
-        } else {
             tagStr = @"false";
+        } else {
+            tagStr = @"true";
         }
         [selfWeak.modalView removeFromSuperview];
         [selfWeak.bounceView removeFromSuperview];
@@ -195,7 +194,7 @@ const NSArray *___JSBModuleType;
         JSBBackModalModel *backModalModel = [[JSBBackModalModel alloc] init];
         backModalModel.message = [[JSBBackMessageModalModel alloc] init];
         backModalModel.callbackId = selfWeak.callBackIDStr;
-        backModalModel.type = @"1";
+        backModalModel.style = @"1";
         backModalModel.message.confirm = tagStr;
         backModalModel.message.cancel = @"false";
 
