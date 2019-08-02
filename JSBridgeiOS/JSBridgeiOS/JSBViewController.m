@@ -96,16 +96,16 @@ const NSArray *___JSBModuleType;
     JSBRequestSystemInfoModel *requestSystemInfoModel = [[JSBRequestSystemInfoModel alloc] initWithDictionary:messageDic error:nil];
     JSBSystemInfoUtil *utils = [JSBSystemInfoUtil new];
     self.backSystemInfoModel.style = @"1";
-    self.backSystemInfoModel.callbackId = [NSString stringWithFormat:@"'%@'", requestSystemInfoModel.callbackId];
-    self.backSystemInfoModel.message.brand = @"'iPhone'";
-    self.backSystemInfoModel.message.model = [NSString stringWithFormat:@"'%@'", [JSBSystemInfoUtil getDeviceName]];
+    self.backSystemInfoModel.callbackId = requestSystemInfoModel.callbackId;
+    self.backSystemInfoModel.message.brand = @"iPhone";
+    self.backSystemInfoModel.message.model = [JSBSystemInfoUtil getDeviceName];
     self.backSystemInfoModel.message.pixelRatio = [JSBSystemInfoUtil getPixelScale];
     self.backSystemInfoModel.message.screenWidth = [JSBSystemInfoUtil getDeviceScreenWidth];
     self.backSystemInfoModel.message.screenHeight = [JSBSystemInfoUtil getDeviceScreenHeight];
     self.backSystemInfoModel.message.windowWidth = _webView.frame.size.width;
     self.backSystemInfoModel.message.windowHeight = _webView.frame.size.height;
-    self.backSystemInfoModel.message.language = [NSString stringWithFormat:@"'%@'", [JSBSystemInfoUtil getDeviceLanguage]];
-    self.backSystemInfoModel.message.system = [NSString stringWithFormat:@"'%@'", [JSBSystemInfoUtil getSystemVersion]];
+    self.backSystemInfoModel.message.language = [JSBSystemInfoUtil getDeviceLanguage];
+    self.backSystemInfoModel.message.system = [JSBSystemInfoUtil getSystemVersion];
     self.backSystemInfoModel.message.statusBarHeight = 20;
     self.backSystemInfoModel.message.albumAuthorized = [JSBSystemInfoUtil getPhotoLibrary];
     self.backSystemInfoModel.message.cameraAuthorized = [JSBSystemInfoUtil getCamera];
@@ -114,11 +114,8 @@ const NSArray *___JSBModuleType;
     self.backSystemInfoModel.message.notificationAuthorized = [utils checkCurrentNotificationStatus];
     self.backSystemInfoModel.message.locationEnabled = [JSBSystemInfoUtil getGPSEnabled];
     self.backSystemInfoModel.message.wifiEnabled = [JSBSystemInfoUtil getWiFiEnabled];
-    
-    NSString *backStr = [self.backSystemInfoModel toJSONString];
-    [self.webView evaluateJavaScript:backStr completionHandler:^(id _Nullable item, NSError * _Nullable error) {
-        DLog(@"%@", backStr);
-    }];
+
+    [self toJSCallBackStr:_backSystemInfoModel];
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
