@@ -11,3 +11,6 @@
 @implementation JSBBackSystemInfoModel
 
 @end
+@implementation JSBBackSystemInfoMessageModel
+
+@end
