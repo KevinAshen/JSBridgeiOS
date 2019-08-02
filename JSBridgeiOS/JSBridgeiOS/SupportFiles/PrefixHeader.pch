@@ -48,7 +48,9 @@
 // 字串 to 枚举
 #define cJSBModuleTypeEnum(string) ([cJSBModuleTypeGet indexOfObject:string])
 
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//weakSELF
+#define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
+
+
 
 #endif /* PrefixHeader_pch */

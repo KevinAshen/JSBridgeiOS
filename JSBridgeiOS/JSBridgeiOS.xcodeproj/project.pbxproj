@@ -14,13 +14,13 @@
 		0412469D22E53A9C00541DD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412469C22E53A9C00541DD9 /* main.m */; };
 		041246A722E53A9C00541DD9 /* JSBridgeiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 041246A622E53A9C00541DD9 /* JSBridgeiOSTests.m */; };
 		041246B222E53A9C00541DD9 /* JSBridgeiOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 041246B122E53A9C00541DD9 /* JSBridgeiOSUITests.m */; };
+		043CF8C022F2E16D001D2800 /* JSBBackModalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CF8BF22F2E16D001D2800 /* JSBBackModalModel.m */; };
 		04564D1A22F03CA00079F3F9 /* JSBBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04564D1922F03CA00079F3F9 /* JSBBaseView.m */; };
 		04564D1E22F03E000079F3F9 /* UIColor+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04564D1D22F03E000079F3F9 /* UIColor+Tool.m */; };
 		04564D2122F03F890079F3F9 /* JSBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04564D2022F03F890079F3F9 /* JSBViewController.m */; };
 		04564D2522F060320079F3F9 /* JSBRequestModalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04564D2422F060320079F3F9 /* JSBRequestModalModel.m */; };
 		04564D2B22F060650079F3F9 /* JSBModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04564D2A22F060650079F3F9 /* JSBModalView.m */; };
 		047185E422E88D6700733391 /* JSBBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047185E322E88D6700733391 /* JSBBaseModel.m */; };
-		049F7F2B22F1BC8500B4FEF1 /* JSBBackMessageModalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 049F7F2A22F1BC8500B4FEF1 /* JSBBackMessageModalModel.m */; };
 		CBA775144FEC72E1B15AC6FC /* libPods-JSBridgeiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D6305A6DAA6E98CAD73270 /* libPods-JSBridgeiOS.a */; };
 		D6AEDCEF22F071BC00053729 /* JSBSystemInfoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AEDCED22F071BC00053729 /* JSBSystemInfoUtil.m */; };
 		D6AEDCF122F073D900053729 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6AEDCF022F073D900053729 /* CoreLocation.framework */; };
@@ -62,6 +62,8 @@
 		041246AD22E53A9C00541DD9 /* JSBridgeiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSBridgeiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		041246B122E53A9C00541DD9 /* JSBridgeiOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBridgeiOSUITests.m; sourceTree = "<group>"; };
 		041246B322E53A9C00541DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		043CF8BE22F2E16D001D2800 /* JSBBackModalModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBBackModalModel.h; sourceTree = "<group>"; };
+		043CF8BF22F2E16D001D2800 /* JSBBackModalModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBBackModalModel.m; sourceTree = "<group>"; };
 		04564D1822F03CA00079F3F9 /* JSBBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBBaseView.h; sourceTree = "<group>"; };
 		04564D1922F03CA00079F3F9 /* JSBBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBBaseView.m; sourceTree = "<group>"; };
 		04564D1C22F03E000079F3F9 /* UIColor+Tool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Tool.h"; sourceTree = "<group>"; };
@@ -74,8 +76,6 @@
 		04564D2A22F060650079F3F9 /* JSBModalView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBModalView.m; sourceTree = "<group>"; };
 		047185E222E88D6700733391 /* JSBBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBBaseModel.h; sourceTree = "<group>"; };
 		047185E322E88D6700733391 /* JSBBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBBaseModel.m; sourceTree = "<group>"; };
-		049F7F2922F1BC8500B4FEF1 /* JSBBackMessageModalModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBBackMessageModalModel.h; sourceTree = "<group>"; };
-		049F7F2A22F1BC8500B4FEF1 /* JSBBackMessageModalModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBBackMessageModalModel.m; sourceTree = "<group>"; };
 		29D6305A6DAA6E98CAD73270 /* libPods-JSBridgeiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSBridgeiOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41BDD978912E69643F90202C /* Pods-JSBridgeiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSBridgeiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSBridgeiOS/Pods-JSBridgeiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		42514D03A02F8BEB1D5919D7 /* Pods-JSBridgeiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSBridgeiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSBridgeiOS/Pods-JSBridgeiOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -197,12 +197,12 @@
 		04564D2222F05C940079F3F9 /* showModal */ = {
 			isa = PBXGroup;
 			children = (
-				04564D2322F060320079F3F9 /* JSBRequestModalModel.h */,
-				04564D2422F060320079F3F9 /* JSBRequestModalModel.m */,
 				04564D2922F060650079F3F9 /* JSBModalView.h */,
 				04564D2A22F060650079F3F9 /* JSBModalView.m */,
-				049F7F2922F1BC8500B4FEF1 /* JSBBackMessageModalModel.h */,
-				049F7F2A22F1BC8500B4FEF1 /* JSBBackMessageModalModel.m */,
+				04564D2322F060320079F3F9 /* JSBRequestModalModel.h */,
+				04564D2422F060320079F3F9 /* JSBRequestModalModel.m */,
+				043CF8BE22F2E16D001D2800 /* JSBBackModalModel.h */,
+				043CF8BF22F2E16D001D2800 /* JSBBackModalModel.m */,
 			);
 			path = showModal;
 			sourceTree = "<group>";
@@ -418,9 +418,9 @@
 				D6AEDCFF22F078BC00053729 /* JSBRequestSystemInfoModel.m in Sources */,
 				D6AEDCEF22F071BC00053729 /* JSBSystemInfoUtil.m in Sources */,
 				04564D2122F03F890079F3F9 /* JSBViewController.m in Sources */,
+				043CF8C022F2E16D001D2800 /* JSBBackModalModel.m in Sources */,
 				04564D2522F060320079F3F9 /* JSBRequestModalModel.m in Sources */,
 				04564D2B22F060650079F3F9 /* JSBModalView.m in Sources */,
-				049F7F2B22F1BC8500B4FEF1 /* JSBBackMessageModalModel.m in Sources */,
 				047185E422E88D6700733391 /* JSBBaseModel.m in Sources */,
 				04564D1A22F03CA00079F3F9 /* JSBBaseView.m in Sources */,
 				0412469D22E53A9C00541DD9 /* main.m in Sources */,
