@@ -131,10 +131,9 @@ const NSArray *___JSBModuleType;
     self.callBackIDStr = [messageDic objectForKey:@"callbackId"];
     if ([message.name isEqualToString:@"JSObject"]) {
         switch (cJSBModuleTypeEnum(typeStr)) {
-            case getSystemInfo: {
+            case getSystemInfo:
                 [self getSystemInfoWithDictionary:messageDic];
                 break;
-            }
             case showModal:
                 [self showModal:messageDic];
                 break;
@@ -143,6 +142,9 @@ const NSArray *___JSBModuleType;
                 break;
             case webviewBack:
                 [self postWebviewBack:messageDic];
+                break;
+            case downLoad:
+                [self addDownloadTask:messageDic];
                 break;
         }
     }
@@ -209,7 +211,22 @@ const NSArray *___JSBModuleType;
     };
 }
 
-//FIXME:这一块还没测！！！
+#pragma mark - 下载相关
+// FIXME:执行完还未传值
+- (void)addDownloadTask:(NSDictionary *)messageDic {
+    
+    DLog(@"addDownloadTask:%@", messageDic);
+    NSDictionary *dataDic = [messageDic valueForKey:@"data"];
+    [[JSBDownloadManager sharedManager] downloadFileOfDataDic:dataDic stateUpdate:^(JSBDownloadState state) {
+        NSLog(@"stateUpdate");
+    } progressUpdate:^(NSInteger receivedSize) {
+        NSLog(@"progressUpdate");
+    } completionDone:^(BOOL isSuccess, NSString * _Nonnull filePath, NSError * _Nonnull error) {
+        NSLog(@"completionDone");
+    }];
+}
+
+//FIXME:这一块还没通
 #pragma mark - IO相关
 
 /// webviewConnect相关方法

@@ -12,7 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSBDownloadPlistModel : JSBDownloadBaseModel
 
-@property (nonatomic, copy) NSString *album;
+@property (nonatomic, copy) NSString *refreshTimeStamp;
+@property (nonatomic, copy) NSString *currentTimeStamp;
+@property (nonatomic, copy) NSString *refreshNewBits;
+@property (nonatomic, copy) NSString *downloadURL;
 
 @end
 

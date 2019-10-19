@@ -10,4 +10,15 @@
 
 @implementation JSBDownloadPlistModel
 
+//赋初值
+- (void)initializeModel {
+    
+    [super initializeModel];
+    self.refreshTimeStamp = @"0";
+    self.currentTimeStamp = @"0";
+    self.currentTimeStamp = @"0";
+    self.refreshNewBits = @"0";
+    self.downloadURL = @"www.yyf.yyf.com";
+}
+
 @end

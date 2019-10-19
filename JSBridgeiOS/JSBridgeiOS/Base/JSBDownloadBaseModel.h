@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *currentNewBits;
 @property (nonatomic, copy) NSString *allBits;
 
+- (void)initializeModel;
 
 @end
 

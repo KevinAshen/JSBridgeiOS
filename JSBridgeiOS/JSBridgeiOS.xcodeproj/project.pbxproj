@@ -234,12 +234,12 @@
 		04385C1F235974420004B11E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				04385C122358E2840004B11E /* JSBDownloadProcessModel.h */,
-				04385C132358E2840004B11E /* JSBDownloadProcessModel.m */,
 				04385C18235973F80004B11E /* JSBDownloadPlistModel.h */,
 				04385C19235973F80004B11E /* JSBDownloadPlistModel.m */,
 				04385C1B235974190004B11E /* JSBDownloadBackModel.h */,
 				04385C1C235974190004B11E /* JSBDownloadBackModel.m */,
+				04385C122358E2840004B11E /* JSBDownloadProcessModel.h */,
+				04385C132358E2840004B11E /* JSBDownloadProcessModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
