@@ -6,33 +6,23 @@
 //  Copyright © 2019 J&Z. All rights reserved.
 //
 
-#import "JSBViewController.h"
-#import "JSBRequestModalModel.h"
-#import "JSBModalView.h"
-#import "JSBBaseModel.h"
-#import "JSBBackModalModel.h"
-#import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WebKit.h>
-#import <CoreBluetooth/CoreBluetooth.h>
-#import "JSBRequestSystemInfoModel.h"
-#import "JSBBackSystemInfoModel.h"
-#import "JSBSystemInfoUtil.h"
-
-typedef NS_ENUM(NSInteger, JSBModuleType) {
-    getSystemInfo = 0,
-    showModal
-};
+#include "JSBViewControllerHeader.h"
 
 const NSArray *___JSBModuleType;
 
 @interface JSBViewController ()<WKNavigationDelegate, WKScriptMessageHandler, CBCentralManagerDelegate>
 
-@property (nonatomic,strong) WKWebView *webView;
+@property (nonatomic,strong) WKWebView *contentWebView;
+//内容WebView【用户可见】
+@property (nonatomic, strong) WKWebView *loadWebView;
+//加载WebView【用户不可见】
 @property (nonatomic, assign) NSInteger moduleType;  //调取模块函数类型
 @property (nonatomic, copy) NSString *callBackIDStr;
 //callBackID
-@property (nonatomic, copy) NSString *backStr;
-//返回给前端所有字符串，包括callbackId, style, message
+@property (nonatomic, copy) NSString *jsCallBackStr;
+//jsCallBack:返回给前端所有字符串，包括callbackId, style, message
+@property (nonatomic, copy) NSString *jxBackStr;
+//jx两个WebView通信用str
 
 ///systemInfo模块
 @property (nonatomic, strong) CBCentralManager *bluetoothManager; //蓝牙控制器
@@ -50,9 +40,14 @@ const NSArray *___JSBModuleType;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //给backStr赋初值，方便KVO的调用
-    self.backStr = @"JKWWSWSWWS";
     
+    //[JSBDownloadManager sharedManager];
+    
+    //给jsCallBackStr赋初值，方便KVO的调用
+    self.jsCallBackStr = @"NEWjsCallBackStr";
+    //给jxBackStr赋初值，方便KVO的调用
+    self.jxBackStr = @"NEWjxBackStr";
+
     [self necessaryInitialize];
     [self setupWKWebView];
 }
@@ -64,7 +59,7 @@ const NSArray *___JSBModuleType;
     self.backSystemInfoModel.message = [[JSBBackSystemInfoMessageModel alloc] init];
 }
 
-//初始化WKWebView
+//初始化两个相关WKWebView
 - (void)setupWKWebView{
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     // 设置偏好设置
@@ -80,18 +75,27 @@ const NSArray *___JSBModuleType;
     //注意在这里注入JS对象名称 "JSObject"
     [config.userContentController addScriptMessageHandler:self name:@"JSObject"];
     
-    self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
-    self.webView.navigationDelegate = self;
+    self.contentWebView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
+    self.contentWebView.navigationDelegate = self;
     
-    [self.view addSubview:self.webView];
+    [self.view addSubview:self.contentWebView];
     
-    NSURL *path = [NSURL URLWithString:@"https://www.konghouy.cn/H5-app/#/"];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:path]];
+    NSURL *path = [NSURL URLWithString:testH5URL];
+    [self.contentWebView loadRequest:[NSURLRequest requestWithURL:path]];
+    
+    //初始化解析WKWebView
+    self.loadWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height / 2.0, self.view.bounds.size.width, self.view.bounds.size.height / 2.0) configuration:config];
+    _loadWebView.navigationDelegate = self;
+    
+    NSString *bundleStr = [[NSBundle mainBundle] pathForResource:testH5IO ofType:@"html"];
+    NSURL *testURL = [NSURL fileURLWithPath:bundleStr];
+    [_loadWebView loadRequest:[NSURLRequest requestWithURL:testURL]];
 }
 
 
 ///getSystemInfo模块
 - (void)getSystemInfoWithDictionary:(NSDictionary *)messageDic{
+    [self addObserver:self forKeyPath:@"jsCallBackStr" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     JSBRequestSystemInfoModel *requestSystemInfoModel = [[JSBRequestSystemInfoModel alloc] initWithDictionary:messageDic error:nil];
     JSBSystemInfoUtil *utils = [JSBSystemInfoUtil new];
     self.backSystemInfoModel.style = @"1";
@@ -101,8 +105,8 @@ const NSArray *___JSBModuleType;
     self.backSystemInfoModel.message.pixelRatio = [JSBSystemInfoUtil getPixelScale];
     self.backSystemInfoModel.message.screenWidth = [JSBSystemInfoUtil getDeviceScreenWidth];
     self.backSystemInfoModel.message.screenHeight = [JSBSystemInfoUtil getDeviceScreenHeight];
-    self.backSystemInfoModel.message.windowWidth = _webView.frame.size.width;
-    self.backSystemInfoModel.message.windowHeight = _webView.frame.size.height;
+    self.backSystemInfoModel.message.windowWidth = _contentWebView.frame.size.width;
+    self.backSystemInfoModel.message.windowHeight = _contentWebView.frame.size.height;
     self.backSystemInfoModel.message.language = [JSBSystemInfoUtil getDeviceLanguage];
     self.backSystemInfoModel.message.system = [JSBSystemInfoUtil getSystemVersion];
     self.backSystemInfoModel.message.statusBarHeight = 20;
@@ -117,25 +121,29 @@ const NSArray *___JSBModuleType;
     [self toJSCallBackStr:_backSystemInfoModel];
 }
 
+
+/// JSBridge核心方法
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    [self addObserver:self forKeyPath:@"backStr" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     ///获取调用模块类型
     NSDictionary *messageDic = (NSDictionary *)message.body;
     NSString *typeStr = [messageDic objectForKey:@"type"];
+    DLog(@"messageDic:%@", messageDic);
     self.callBackIDStr = [messageDic objectForKey:@"callbackId"];
     if ([message.name isEqualToString:@"JSObject"]) {
-        if ([message.name isEqualToString:@"JSObject"]) {
-            switch (cJSBModuleTypeEnum(typeStr)) {
-                case getSystemInfo: {
-                    [self getSystemInfoWithDictionary:messageDic];
-                    NSDictionary *systemInfoDic = [_backSystemInfoModel toDictionary];
-//                    NSString *str = [_backSystemInfoModel toJSONString];
-                    DLog(@"%@", systemInfoDic);
-                    break;
-                }
-                case showModal:
-                    [self showModal:messageDic];
+        switch (cJSBModuleTypeEnum(typeStr)) {
+            case getSystemInfo: {
+                [self getSystemInfoWithDictionary:messageDic];
+                break;
             }
+            case showModal:
+                [self showModal:messageDic];
+                break;
+            case webviewConnect:
+                [self getWebviewConnect:messageDic];
+                break;
+            case webviewBack:
+                [self postWebviewBack:messageDic];
+                break;
         }
     }
 }
@@ -152,11 +160,13 @@ const NSArray *___JSBModuleType;
 }
 
 - (void)showModal:(NSDictionary *)modalDic {
+    
+    [self addObserver:self forKeyPath:@"jsCallBackStr" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     NSDictionary *dataDic = [modalDic objectForKey:@"data"];
     JSBRequestModalModel *requestModalModel = [[JSBRequestModalModel alloc] initWithDictionary:dataDic error:nil];
     
     self.bounceView = [[UIView alloc] initWithFrame:self.view.frame];
-    [_webView addSubview:_bounceView];
+    [_contentWebView addSubview:_bounceView];
     
     _bounceView.backgroundColor = [UIColor colorWithRed:0.49f green:0.49f blue:0.49f alpha:1.00f];
     modalViewStyle style;
@@ -196,22 +206,70 @@ const NSArray *___JSBModuleType;
         backModalModel.message.cancel = @"false";
 
         [selfWeak toJSCallBackStr:backModalModel];
-        
     };
+}
+
+//FIXME:这一块还没测！！！
+#pragma mark - IO相关
+
+/// webviewConnect相关方法
+- (void)getWebviewConnect:(NSDictionary *)messageDic {
+    
+    [self addObserver:self forKeyPath:@"jxBackStr" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    NSDictionary *dataDic = [messageDic objectForKey:@"data"];
+    NSString *jxBackStr = [dataDic objectForKey:@"msg"];
+    DLog(@"jxBackStr:%@", jxBackStr);
+    [self toJXBackStr:jxBackStr];
+}
+
+/// webviewBack相关方法
+- (void)postWebviewBack:(NSDictionary *)messageDic {
+    
+    [self addObserver:self forKeyPath:@"jsCallBackStr" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    NSDictionary *dataDic = [messageDic objectForKey:@"data"];
+    JSBWebviewBackModel *webviewBackModel = [[JSBWebviewBackModel alloc] init];
+    webviewBackModel.style = @"1";
+    webviewBackModel.message = [[JSBWebviewBackMessageModel alloc] init];
+    webviewBackModel.message.data = [NSString stringWithFormat:@"%@", [dataDic objectForKey:@"data"]];
+    webviewBackModel.callbackId = self.callBackIDStr;
+    
+    //FIXME:这一块没有封装！！！
+    NSString *resStr = [NSString stringWithFormat:@"jsCallBack({style:1,callbackId:%@,message:{data:'%@'}})", self.callBackIDStr, webviewBackModel.message.data];
+    self.jsCallBackStr = resStr;
+    
+    //[self toJSCallBackStr:webviewBackModel];
+}
+
+#pragma mark - KVO相关
+
+- (void)toJXBackStr:(NSString *)jxStr {
+    
+    self.jxBackStr = jxStr;
 }
 
 - (void)toJSCallBackStr:(id)model {
     NSString *tmpStr = [(JSBBaseModel *)model toJSONString];
-    self.backStr = [NSString stringWithFormat:@"jsCallBack(%@)", tmpStr];
+    self.jsCallBackStr = [NSString stringWithFormat:@"jsCallBack(%@)", tmpStr];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqual:@"backStr"]) {
-        NSLog(@"old price: %@",[change objectForKey:@"old"]);
-        NSLog(@"new price: %@",[change objectForKey:@"new"]);
-        [self removeObserver:self forKeyPath:@"backStr"];
-        [self.webView evaluateJavaScript:self->_backStr completionHandler:^(id _Nullable item, NSError * _Nullable error) {
-            DLog(@"JSBridge--SUCCESS");
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSKeyValueChangeKey,id> *)change
+                       context:(void *)context {
+    if ([keyPath isEqual:@"jsCallBackStr"]) {
+        NSLog(@"jsCallBackStr old price: %@",[change objectForKey:@"old"]);
+        NSLog(@"jsCallBackStr new price: %@",[change objectForKey:@"new"]);
+        [self removeObserver:self forKeyPath:@"jsCallBackStr"];
+        [self.contentWebView evaluateJavaScript:self->_jsCallBackStr completionHandler:^(id _Nullable item, NSError * _Nullable error) {
+            DLog(@"JSBridge--SUCCESS--jsCallBackStr");
+        }];
+    }
+    if ([keyPath isEqual:@"jxBackStr"]) {
+        NSLog(@"jxBackStr old price: %@",[change objectForKey:@"old"]);
+        NSLog(@"jxBackStr new price: %@",[change objectForKey:@"new"]);
+        [self removeObserver:self forKeyPath:@"jxBackStr"];
+        [self.loadWebView evaluateJavaScript:self->_jxBackStr completionHandler:^(id _Nullable item, NSError * _Nullable error) {
+            DLog(@"JSBridge--SUCCESS--jxBackStr");
         }];
     }
 }

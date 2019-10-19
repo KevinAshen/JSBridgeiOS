@@ -14,6 +14,13 @@
 		0412469D22E53A9C00541DD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0412469C22E53A9C00541DD9 /* main.m */; };
 		041246A722E53A9C00541DD9 /* JSBridgeiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 041246A622E53A9C00541DD9 /* JSBridgeiOSTests.m */; };
 		041246B222E53A9C00541DD9 /* JSBridgeiOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 041246B122E53A9C00541DD9 /* JSBridgeiOSUITests.m */; };
+		04385C0223588D540004B11E /* new-io.html in Resources */ = {isa = PBXBuildFile; fileRef = 04385C0123588D540004B11E /* new-io.html */; };
+		04385C07235894200004B11E /* JSBWebviewBackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04385C06235894200004B11E /* JSBWebviewBackModel.m */; };
+		04385C112358E2690004B11E /* JSBDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04385C102358E2690004B11E /* JSBDownloadManager.m */; };
+		04385C142358E2840004B11E /* JSBDownloadProcessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04385C132358E2840004B11E /* JSBDownloadProcessModel.m */; };
+		04385C1723596FED0004B11E /* JSBDownloadBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04385C1623596FED0004B11E /* JSBDownloadBaseModel.m */; };
+		04385C1A235973F80004B11E /* JSBDownloadPlistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04385C19235973F80004B11E /* JSBDownloadPlistModel.m */; };
+		04385C1D235974190004B11E /* JSBDownloadBackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04385C1C235974190004B11E /* JSBDownloadBackModel.m */; };
 		043CF8C022F2E16D001D2800 /* JSBBackModalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CF8BF22F2E16D001D2800 /* JSBBackModalModel.m */; };
 		04564D1A22F03CA00079F3F9 /* JSBBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04564D1922F03CA00079F3F9 /* JSBBaseView.m */; };
 		04564D1E22F03E000079F3F9 /* UIColor+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04564D1D22F03E000079F3F9 /* UIColor+Tool.m */; };
@@ -62,6 +69,21 @@
 		041246AD22E53A9C00541DD9 /* JSBridgeiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSBridgeiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		041246B122E53A9C00541DD9 /* JSBridgeiOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBridgeiOSUITests.m; sourceTree = "<group>"; };
 		041246B322E53A9C00541DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04385C0123588D540004B11E /* new-io.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "new-io.html"; sourceTree = "<group>"; };
+		04385C05235894200004B11E /* JSBWebviewBackModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBWebviewBackModel.h; sourceTree = "<group>"; };
+		04385C06235894200004B11E /* JSBWebviewBackModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBWebviewBackModel.m; sourceTree = "<group>"; };
+		04385C08235894920004B11E /* JSBViewControllerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBViewControllerHeader.h; sourceTree = "<group>"; };
+		04385C0E2358E2530004B11E /* JSBDownloadManagerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBDownloadManagerHeader.h; sourceTree = "<group>"; };
+		04385C0F2358E2690004B11E /* JSBDownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBDownloadManager.h; sourceTree = "<group>"; };
+		04385C102358E2690004B11E /* JSBDownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBDownloadManager.m; sourceTree = "<group>"; };
+		04385C122358E2840004B11E /* JSBDownloadProcessModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBDownloadProcessModel.h; sourceTree = "<group>"; };
+		04385C132358E2840004B11E /* JSBDownloadProcessModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBDownloadProcessModel.m; sourceTree = "<group>"; };
+		04385C1523596FED0004B11E /* JSBDownloadBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBDownloadBaseModel.h; sourceTree = "<group>"; };
+		04385C1623596FED0004B11E /* JSBDownloadBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBDownloadBaseModel.m; sourceTree = "<group>"; };
+		04385C18235973F80004B11E /* JSBDownloadPlistModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBDownloadPlistModel.h; sourceTree = "<group>"; };
+		04385C19235973F80004B11E /* JSBDownloadPlistModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBDownloadPlistModel.m; sourceTree = "<group>"; };
+		04385C1B235974190004B11E /* JSBDownloadBackModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBDownloadBackModel.h; sourceTree = "<group>"; };
+		04385C1C235974190004B11E /* JSBDownloadBackModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBDownloadBackModel.m; sourceTree = "<group>"; };
 		043CF8BE22F2E16D001D2800 /* JSBBackModalModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBBackModalModel.h; sourceTree = "<group>"; };
 		043CF8BF22F2E16D001D2800 /* JSBBackModalModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBBackModalModel.m; sourceTree = "<group>"; };
 		04564D1822F03CA00079F3F9 /* JSBBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBBaseView.h; sourceTree = "<group>"; };
@@ -143,12 +165,14 @@
 			isa = PBXGroup;
 			children = (
 				0412469B22E53A9C00541DD9 /* Info.plist */,
+				04385C08235894920004B11E /* JSBViewControllerHeader.h */,
 				04564D1F22F03F890079F3F9 /* JSBViewController.h */,
 				04564D2022F03F890079F3F9 /* JSBViewController.m */,
 				D6AEDCE822F0709C00053729 /* modules */,
 				04564D1B22F03DBA0079F3F9 /* Utils */,
 				04564D1122F03ADE0079F3F9 /* SupportFiles */,
 				047185E522E88EAA00733391 /* Base */,
+				04385C0023588D2D0004B11E /* Source */,
 			);
 			path = JSBridgeiOS;
 			sourceTree = "<group>";
@@ -169,6 +193,55 @@
 				041246B322E53A9C00541DD9 /* Info.plist */,
 			);
 			path = JSBridgeiOSUITests;
+			sourceTree = "<group>";
+		};
+		04385C0023588D2D0004B11E /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				04385C0123588D540004B11E /* new-io.html */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		04385C03235893A00004B11E /* webviewBack */ = {
+			isa = PBXGroup;
+			children = (
+				04385C05235894200004B11E /* JSBWebviewBackModel.h */,
+				04385C06235894200004B11E /* JSBWebviewBackModel.m */,
+			);
+			path = webviewBack;
+			sourceTree = "<group>";
+		};
+		04385C092358E14E0004B11E /* downloadModule */ = {
+			isa = PBXGroup;
+			children = (
+				04385C1E2359743B0004B11E /* Manager */,
+				04385C1F235974420004B11E /* Model */,
+			);
+			path = downloadModule;
+			sourceTree = "<group>";
+		};
+		04385C1E2359743B0004B11E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				04385C0E2358E2530004B11E /* JSBDownloadManagerHeader.h */,
+				04385C0F2358E2690004B11E /* JSBDownloadManager.h */,
+				04385C102358E2690004B11E /* JSBDownloadManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		04385C1F235974420004B11E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04385C122358E2840004B11E /* JSBDownloadProcessModel.h */,
+				04385C132358E2840004B11E /* JSBDownloadProcessModel.m */,
+				04385C18235973F80004B11E /* JSBDownloadPlistModel.h */,
+				04385C19235973F80004B11E /* JSBDownloadPlistModel.m */,
+				04385C1B235974190004B11E /* JSBDownloadBackModel.h */,
+				04385C1C235974190004B11E /* JSBDownloadBackModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		04564D1122F03ADE0079F3F9 /* SupportFiles */ = {
@@ -214,6 +287,8 @@
 				047185E322E88D6700733391 /* JSBBaseModel.m */,
 				04564D1822F03CA00079F3F9 /* JSBBaseView.h */,
 				04564D1922F03CA00079F3F9 /* JSBBaseView.m */,
+				04385C1523596FED0004B11E /* JSBDownloadBaseModel.h */,
+				04385C1623596FED0004B11E /* JSBDownloadBaseModel.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -240,6 +315,8 @@
 		D6AEDCE822F0709C00053729 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				04385C092358E14E0004B11E /* downloadModule */,
+				04385C03235893A00004B11E /* webviewBack */,
 				D6AEDCE922F070DF00053729 /* getSystemInfo */,
 				04564D2222F05C940079F3F9 /* showModal */,
 			);
@@ -364,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0412469A22E53A9C00541DD9 /* LaunchScreen.storyboard in Resources */,
+				04385C0223588D540004B11E /* new-io.html in Resources */,
 				0412469722E53A9C00541DD9 /* Assets.xcassets in Resources */,
 				0412469522E53A9A00541DD9 /* Main.storyboard in Resources */,
 			);
@@ -415,9 +493,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04385C07235894200004B11E /* JSBWebviewBackModel.m in Sources */,
 				D6AEDCFF22F078BC00053729 /* JSBRequestSystemInfoModel.m in Sources */,
 				D6AEDCEF22F071BC00053729 /* JSBSystemInfoUtil.m in Sources */,
+				04385C112358E2690004B11E /* JSBDownloadManager.m in Sources */,
+				04385C1723596FED0004B11E /* JSBDownloadBaseModel.m in Sources */,
 				04564D2122F03F890079F3F9 /* JSBViewController.m in Sources */,
+				04385C1D235974190004B11E /* JSBDownloadBackModel.m in Sources */,
 				043CF8C022F2E16D001D2800 /* JSBBackModalModel.m in Sources */,
 				04564D2522F060320079F3F9 /* JSBRequestModalModel.m in Sources */,
 				04564D2B22F060650079F3F9 /* JSBModalView.m in Sources */,
@@ -425,6 +507,8 @@
 				04564D1A22F03CA00079F3F9 /* JSBBaseView.m in Sources */,
 				0412469D22E53A9C00541DD9 /* main.m in Sources */,
 				D6AEDCFC22F075A800053729 /* JSBBackSystemInfoModel.m in Sources */,
+				04385C142358E2840004B11E /* JSBDownloadProcessModel.m in Sources */,
+				04385C1A235973F80004B11E /* JSBDownloadPlistModel.m in Sources */,
 				0412468F22E53A9A00541DD9 /* AppDelegate.m in Sources */,
 				04564D1E22F03E000079F3F9 /* UIColor+Tool.m in Sources */,
 			);
