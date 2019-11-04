@@ -32,7 +32,9 @@ typedef NS_ENUM(NSInteger, JSBModuleType) {
     getSystemInfo = 0,
     showModal,
     webviewConnect,
-    webviewBack
+    webviewBack,
+    downLoad,
+    downLoadNow
 };
 
 #endif /* JSBViewControllerHeader_h */

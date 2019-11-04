@@ -10,4 +10,13 @@
 
 @implementation JSBDownloadPlistModel
 
+//赋初值
+- (void)initializeModel {
+    
+    [super initializeModel];
+    self.currentTimeStamp = 0;
+    self.fileType = @"mp3";
+    self.downloadURL = @"www.yyf.yyf.com";
+}
+
 @end

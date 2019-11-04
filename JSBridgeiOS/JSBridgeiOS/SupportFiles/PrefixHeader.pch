@@ -40,7 +40,7 @@
 // 创建初始化函数。等于用宏创建一个getter函数
 #define cJSBModuleTypeGet (___JSBModuleType == nil ? ___JSBModuleType = [[NSArray alloc] initWithObjects:\
 @"getSystemInfo",\
-@"showModal", @"webviewConnect", @"webviewBack", nil] : ___JSBModuleType)
+@"showModal", @"webviewConnect", @"webviewBack", @"downLoad", @"downLoadNow", nil] : ___JSBModuleType)
 
 // 枚举 to 字串
 #define cJSBModuleTypeString(type) ([cJSBModuleTypeGet objectAtIndex:type])
