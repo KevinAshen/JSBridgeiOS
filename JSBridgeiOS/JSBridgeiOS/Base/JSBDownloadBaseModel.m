@@ -26,10 +26,10 @@
     self.name = @"Smells Like Teen Spirit";
     self.singer = @"Nirvana";
     self.songID = @"888888";
-    self.type = @"FUCK";
-    self.allBits = @"666";
-    self.speed = @"250";
-    self.currentNewBits = @"777";
+    self.type = 999;
+    self.allBits = 666;
+    self.speed = 250;
+    self.currentNewBits = 777;
     return;
 }
 

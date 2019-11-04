@@ -14,10 +14,8 @@
 - (void)initializeModel {
     
     [super initializeModel];
-    self.refreshTimeStamp = @"0";
-    self.currentTimeStamp = @"0";
-    self.currentTimeStamp = @"0";
-    self.refreshNewBits = @"0";
+    self.currentTimeStamp = 0;
+    self.fileType = @"mp3";
     self.downloadURL = @"www.yyf.yyf.com";
 }
 

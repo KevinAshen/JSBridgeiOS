@@ -16,10 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *singer;
 @property (nonatomic, copy) NSString *songID;
-@property (nonatomic, copy) NSString *type;
-@property (nonatomic, copy) NSString *speed;
-@property (nonatomic, copy) NSString *currentNewBits;
-@property (nonatomic, copy) NSString *allBits;
+
+@property (nonatomic, assign) float speed;
+
+@property (nonatomic, assign) NSInteger currentNewBits;
+@property (nonatomic, assign) NSInteger allBits;
+@property (nonatomic, assign) NSInteger type;
 
 - (void)initializeModel;
 

@@ -34,14 +34,14 @@ const NSArray *___JSBModuleType;
 @property (nonatomic, strong) UIView *bounceView;
 //背景阴影bounceView
 
+@property (nonatomic, assign) NSInteger time;
+ 
 @end
 
 @implementation JSBViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //[JSBDownloadManager sharedManager];
     
     //给jsCallBackStr赋初值，方便KVO的调用
     self.jsCallBackStr = @"NEWjsCallBackStr";
@@ -50,6 +50,8 @@ const NSArray *___JSBModuleType;
 
     [self necessaryInitialize];
     [self setupWKWebView];
+
+    [self clearCache];
 }
 
 - (void)necessaryInitialize {
@@ -92,7 +94,6 @@ const NSArray *___JSBModuleType;
     [_loadWebView loadRequest:[NSURLRequest requestWithURL:testURL]];
 }
 
-
 ///getSystemInfo模块
 - (void)getSystemInfoWithDictionary:(NSDictionary *)messageDic{
     [self addObserver:self forKeyPath:@"jsCallBackStr" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
@@ -121,13 +122,11 @@ const NSArray *___JSBModuleType;
     [self toJSCallBackStr:_backSystemInfoModel];
 }
 
-
 /// JSBridge核心方法
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     ///获取调用模块类型
     NSDictionary *messageDic = (NSDictionary *)message.body;
     NSString *typeStr = [messageDic objectForKey:@"type"];
-    DLog(@"messageDic:%@", messageDic);
     self.callBackIDStr = [messageDic objectForKey:@"callbackId"];
     if ([message.name isEqualToString:@"JSObject"]) {
         switch (cJSBModuleTypeEnum(typeStr)) {
@@ -146,11 +145,14 @@ const NSArray *___JSBModuleType;
             case downLoad:
                 [self addDownloadTask:messageDic];
                 break;
+            case downLoadNow:
+                [self downloadTaskSituation:1000];
+                break;
         }
     }
 }
 
-//第一次打开调用这个函数( 蓝牙控制)
+//第一次打开调用这个函数(蓝牙控制)
 - (void)centralManagerDidUpdateState:(nonnull CBCentralManager *)central {
     if (_bluetoothManager.state == CBManagerStatePoweredOn) {
         NSLog(@"蓝牙开着");
@@ -215,7 +217,6 @@ const NSArray *___JSBModuleType;
 // FIXME:执行完还未传值
 - (void)addDownloadTask:(NSDictionary *)messageDic {
     
-    DLog(@"addDownloadTask:%@", messageDic);
     NSDictionary *dataDic = [messageDic valueForKey:@"data"];
     [[JSBDownloadManager sharedManager] downloadFileOfDataDic:dataDic stateUpdate:^(JSBDownloadState state) {
         NSLog(@"stateUpdate");
@@ -224,6 +225,18 @@ const NSArray *___JSBModuleType;
     } completionDone:^(BOOL isSuccess, NSString * _Nonnull filePath, NSError * _Nonnull error) {
         NSLog(@"completionDone");
     }];
+}
+
+- (void)downloadTaskSituation:(NSInteger)type {
+    
+    [self addObserver:self forKeyPath:@"jsCallBackStr" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    NSMutableArray *tmpMutArr = [[JSBDownloadManager sharedManager] downloadTaskBack:type];
+    NSString *tmpMutArrStr = [tmpMutArr componentsJoinedByString:@","];
+    NSString *resTmpMutArrStr = [tmpMutArrStr stringByReplacingOccurrencesOfString:@"=" withString:@":"];
+    NSString *newResTmpMutArrStr = [resTmpMutArrStr stringByReplacingOccurrencesOfString:@";" withString:@","];
+    
+    
+    self.jsCallBackStr = [NSString stringWithFormat:@"jsCallBack({style:1,callbackId:%@,message:[%@]})", self.callBackIDStr, newResTmpMutArrStr];
 }
 
 //FIXME:这一块还没通
@@ -235,7 +248,6 @@ const NSArray *___JSBModuleType;
     [self addObserver:self forKeyPath:@"jxBackStr" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     NSDictionary *dataDic = [messageDic objectForKey:@"data"];
     NSString *jxBackStr = [dataDic objectForKey:@"msg"];
-    DLog(@"jxBackStr:%@", jxBackStr);
     [self toJXBackStr:jxBackStr];
 }
 
@@ -251,10 +263,8 @@ const NSArray *___JSBModuleType;
     webviewBackModel.callbackId = self.callBackIDStr;
     
     //FIXME:这一块没有封装！！！
-    NSString *resStr = [NSString stringWithFormat:@"jsCallBack({style:1,callbackId:%@,message:{data:'%@'}})", self.callBackIDStr, webviewBackModel.message.data];
+    NSString *resStr = [NSString stringWithFormat:@"jsCallBack({style:1,callbackId:%@,message:'{\"data\":\"%@\"}\'})", self.callBackIDStr, webviewBackModel.message.data];
     self.jsCallBackStr = resStr;
-    
-    //[self toJSCallBackStr:webviewBackModel];
 }
 
 #pragma mark - KVO相关
@@ -278,7 +288,7 @@ const NSArray *___JSBModuleType;
         NSLog(@"jsCallBackStr new price: %@",[change objectForKey:@"new"]);
         [self removeObserver:self forKeyPath:@"jsCallBackStr"];
         [self.contentWebView evaluateJavaScript:self->_jsCallBackStr completionHandler:^(id _Nullable item, NSError * _Nullable error) {
-            DLog(@"JSBridge--SUCCESS--jsCallBackStr");
+            //DLog(@"JSBridge--SUCCESS--jsCallBackStr");
         }];
     }
     if ([keyPath isEqual:@"jxBackStr"]) {
@@ -286,8 +296,26 @@ const NSArray *___JSBModuleType;
         NSLog(@"jxBackStr new price: %@",[change objectForKey:@"new"]);
         [self removeObserver:self forKeyPath:@"jxBackStr"];
         [self.loadWebView evaluateJavaScript:self->_jxBackStr completionHandler:^(id _Nullable item, NSError * _Nullable error) {
-            DLog(@"JSBridge--SUCCESS--jxBackStr");
+            //DLog(@"JSBridge--SUCCESS--jxBackStr");
         }];
+    }
+}
+
+#pragma mark - test相关
+// 清理clearWKWebViewCache缓存
+- (void)clearCache {
+    if ([[[UIDevice currentDevice]systemVersion]intValue ] >= 9.0) {
+        NSArray * types =@[WKWebsiteDataTypeMemoryCache,WKWebsiteDataTypeDiskCache]; // 9.0之后才有的
+        NSSet *websiteDataTypes = [NSSet setWithArray:types];
+        NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
+        [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
+        }];
+    }else{
+        NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,NSUserDomainMask,YES) objectAtIndex:0];
+        NSString *cookiesFolderPath = [libraryPath stringByAppendingString:@"/Cookies"];
+        NSLog(@"%@", cookiesFolderPath);
+        NSError *errors;
+        [[NSFileManager defaultManager] removeItemAtPath:cookiesFolderPath error:&errors];
     }
 }
 

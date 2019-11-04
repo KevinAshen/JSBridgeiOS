@@ -33,7 +33,8 @@ typedef NS_ENUM(NSInteger, JSBModuleType) {
     showModal,
     webviewConnect,
     webviewBack,
-    downLoad
+    downLoad,
+    downLoadNow
 };
 
 #endif /* JSBViewControllerHeader_h */

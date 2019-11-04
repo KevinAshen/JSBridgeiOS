@@ -36,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSBDownloadProcessModel : NSObject
 
+@property (nonatomic, copy) NSString *songID;
+
 @property (nonatomic, strong) NSURL *downloadURL;
 @property (nonatomic, strong) NSURLSessionDataTask *downloadDataTask;
 

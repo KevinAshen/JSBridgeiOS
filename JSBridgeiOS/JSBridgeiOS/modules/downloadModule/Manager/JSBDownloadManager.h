@@ -10,6 +10,7 @@
 #include "JSBDownloadManagerHeader.h"
 #include "JSBDownloadProcessModel.h"
 #include "JSBDownloadPlistModel.h"
+#include "JSBDownloadBackModel.h"
 
 /**
 Manager类
@@ -54,12 +55,12 @@ NS_ASSUME_NONNULL_BEGIN
  @param completionDone 下载完成后调用的block
  */
 - (void)downloadFileOfDataDic:(NSDictionary *)dataDic
-              stateUpdate:(StateUpdate)stateUpdate
-           progressUpdate:(ProgressUpdate)progressUpdate
-           completionDone:(CompletionDone)completionDone;
+                  stateUpdate:(StateUpdate)stateUpdate
+               progressUpdate:(ProgressUpdate)progressUpdate
+               completionDone:(CompletionDone)completionDone;
 
 //判断下载是否完成
-- (BOOL)isDownloadCompleteOfSongID:(NSString *)songID;
+- (BOOL)isDownloadCompleteOfFileName:(NSString *)fileName;
 
 //FIXME:其余操作还未上线
 ////下载暂停
@@ -77,11 +78,13 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Files
 
 //根据songID获取文件存储全路径
-- (NSString *)fileFullPathOfSongID:(NSString *)songID;
+- (NSString *)fileFullPathOfSongID:(NSString *)songID fileType:(NSString *)fileType;
 
 //FIXME:删除功能还未上线
 //根据URL删除本地文件
 //- (void)deleteFileOfSongID:(NSString *)songID;
+
+- (NSMutableArray *)downloadTaskBack:(NSInteger)typeInt;
 
 @end
 
