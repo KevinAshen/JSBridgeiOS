@@ -30,6 +30,9 @@
 		047185E422E88D6700733391 /* JSBBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047185E322E88D6700733391 /* JSBBaseModel.m */; };
 		04C71EBF2360662800A69F5B /* NSDictionary+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C71EBE2360662800A69F5B /* NSDictionary+Tool.m */; };
 		CBA775144FEC72E1B15AC6FC /* libPods-JSBridgeiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D6305A6DAA6E98CAD73270 /* libPods-JSBridgeiOS.a */; };
+		D60057E9237964130016CA37 /* JSBModulesFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D60057E8237964130016CA37 /* JSBModulesFactory.m */; };
+		D60057EC237967970016CA37 /* JSBBaseModule.m in Sources */ = {isa = PBXBuildFile; fileRef = D60057EB237967970016CA37 /* JSBBaseModule.m */; };
+		D60057EE23799E850016CA37 /* ModuleName.plist in Resources */ = {isa = PBXBuildFile; fileRef = D60057ED23799E850016CA37 /* ModuleName.plist */; };
 		D6AEDCEF22F071BC00053729 /* JSBSystemInfoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AEDCED22F071BC00053729 /* JSBSystemInfoUtil.m */; };
 		D6AEDCF122F073D900053729 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6AEDCF022F073D900053729 /* CoreLocation.framework */; };
 		D6AEDCF322F073E600053729 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6AEDCF222F073E600053729 /* CoreBluetooth.framework */; };
@@ -104,6 +107,11 @@
 		29D6305A6DAA6E98CAD73270 /* libPods-JSBridgeiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSBridgeiOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41BDD978912E69643F90202C /* Pods-JSBridgeiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSBridgeiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSBridgeiOS/Pods-JSBridgeiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		42514D03A02F8BEB1D5919D7 /* Pods-JSBridgeiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSBridgeiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSBridgeiOS/Pods-JSBridgeiOS.release.xcconfig"; sourceTree = "<group>"; };
+		D60057E7237964130016CA37 /* JSBModulesFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBModulesFactory.h; sourceTree = "<group>"; };
+		D60057E8237964130016CA37 /* JSBModulesFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBModulesFactory.m; sourceTree = "<group>"; };
+		D60057EA237967970016CA37 /* JSBBaseModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBBaseModule.h; sourceTree = "<group>"; };
+		D60057EB237967970016CA37 /* JSBBaseModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBBaseModule.m; sourceTree = "<group>"; };
+		D60057ED23799E850016CA37 /* ModuleName.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ModuleName.plist; sourceTree = "<group>"; };
 		D6AEDCED22F071BC00053729 /* JSBSystemInfoUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBSystemInfoUtil.m; sourceTree = "<group>"; };
 		D6AEDCEE22F071BC00053729 /* JSBSystemInfoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBSystemInfoUtil.h; sourceTree = "<group>"; };
 		D6AEDCF022F073D900053729 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -167,7 +175,10 @@
 		0412468C22E53A9A00541DD9 /* JSBridgeiOS */ = {
 			isa = PBXGroup;
 			children = (
+				D60057ED23799E850016CA37 /* ModuleName.plist */,
 				0412469B22E53A9C00541DD9 /* Info.plist */,
+				D60057E7237964130016CA37 /* JSBModulesFactory.h */,
+				D60057E8237964130016CA37 /* JSBModulesFactory.m */,
 				04385C08235894920004B11E /* JSBViewControllerHeader.h */,
 				04564D1F22F03F890079F3F9 /* JSBViewController.h */,
 				04564D2022F03F890079F3F9 /* JSBViewController.m */,
@@ -294,6 +305,8 @@
 				04564D1922F03CA00079F3F9 /* JSBBaseView.m */,
 				04385C1523596FED0004B11E /* JSBDownloadBaseModel.h */,
 				04385C1623596FED0004B11E /* JSBDownloadBaseModel.m */,
+				D60057EA237967970016CA37 /* JSBBaseModule.h */,
+				D60057EB237967970016CA37 /* JSBBaseModule.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -445,6 +458,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D60057EE23799E850016CA37 /* ModuleName.plist in Resources */,
 				0412469A22E53A9C00541DD9 /* LaunchScreen.storyboard in Resources */,
 				04385C0223588D540004B11E /* new-io.html in Resources */,
 				0412469722E53A9C00541DD9 /* Assets.xcassets in Resources */,
@@ -500,6 +514,7 @@
 			files = (
 				04385C07235894200004B11E /* JSBWebviewBackModel.m in Sources */,
 				D6AEDCFF22F078BC00053729 /* JSBRequestSystemInfoModel.m in Sources */,
+				D60057EC237967970016CA37 /* JSBBaseModule.m in Sources */,
 				D6AEDCEF22F071BC00053729 /* JSBSystemInfoUtil.m in Sources */,
 				04385C112358E2690004B11E /* JSBDownloadManager.m in Sources */,
 				04385C1723596FED0004B11E /* JSBDownloadBaseModel.m in Sources */,
@@ -509,6 +524,7 @@
 				04C71EBF2360662800A69F5B /* NSDictionary+Tool.m in Sources */,
 				04564D2522F060320079F3F9 /* JSBRequestModalModel.m in Sources */,
 				04564D2B22F060650079F3F9 /* JSBModalView.m in Sources */,
+				D60057E9237964130016CA37 /* JSBModulesFactory.m in Sources */,
 				047185E422E88D6700733391 /* JSBBaseModel.m in Sources */,
 				04564D1A22F03CA00079F3F9 /* JSBBaseView.m in Sources */,
 				0412469D22E53A9C00541DD9 /* main.m in Sources */,

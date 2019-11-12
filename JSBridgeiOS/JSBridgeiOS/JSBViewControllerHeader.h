@@ -22,9 +22,10 @@
 #import "JSBSystemInfoUtil.h"
 #import "JSBWebviewBackModel.h"
 #import "JSBDownloadManager.h"
+#import "JSBBaseModule.h"
 
 //显示用WKWebView加载的URL
-#define testH5URL @"http://www.konghouy.cn/H5-app/wangyi.html"
+#define testH5URL @"http://www.konghouy.cn/H5-app/index.html"
 //解析用WKWebView加载的本地H5文件名
 #define testH5IO @"new-io"
 

@@ -7,6 +7,7 @@
 //
 
 #include "JSBViewControllerHeader.h"
+#import "JSBModulesFactory.h"
 
 const NSArray *___JSBModuleType;
 
@@ -26,7 +27,8 @@ const NSArray *___JSBModuleType;
 
 ///systemInfo模块
 @property (nonatomic, strong) CBCentralManager *bluetoothManager; //蓝牙控制器
-@property (nonatomic, strong) JSBBackSystemInfoModel *backSystemInfoModel;
+//@property (nonatomic, strong) JSBBackSystemInfoModel *backSystemInfoModel;
+@property (nonatomic, copy) NSString *bluetoothEnabled;
 
 ///modal模块
 @property (nonatomic, strong) JSBModalView *modalView;
@@ -57,8 +59,8 @@ const NSArray *___JSBModuleType;
 - (void)necessaryInitialize {
     ///getSystemInfo模块
     self.bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-    self.backSystemInfoModel = [[JSBBackSystemInfoModel alloc] init];
-    self.backSystemInfoModel.message = [[JSBBackSystemInfoMessageModel alloc] init];
+//    self.backSystemInfoModel = [[JSBBackSystemInfoModel alloc] init];
+//    self.backSystemInfoModel.message = [[JSBBackSystemInfoMessageModel alloc] init];
 }
 
 //初始化两个相关WKWebView
@@ -94,34 +96,6 @@ const NSArray *___JSBModuleType;
     [_loadWebView loadRequest:[NSURLRequest requestWithURL:testURL]];
 }
 
-///getSystemInfo模块
-- (void)getSystemInfoWithDictionary:(NSDictionary *)messageDic{
-    [self addObserver:self forKeyPath:@"jsCallBackStr" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
-    JSBRequestSystemInfoModel *requestSystemInfoModel = [[JSBRequestSystemInfoModel alloc] initWithDictionary:messageDic error:nil];
-    JSBSystemInfoUtil *utils = [JSBSystemInfoUtil new];
-    self.backSystemInfoModel.style = @"1";
-    self.backSystemInfoModel.callbackId = requestSystemInfoModel.callbackId;
-    self.backSystemInfoModel.message.brand = @"iPhone";
-    self.backSystemInfoModel.message.model = [JSBSystemInfoUtil getDeviceName];
-    self.backSystemInfoModel.message.pixelRatio = [JSBSystemInfoUtil getPixelScale];
-    self.backSystemInfoModel.message.screenWidth = [JSBSystemInfoUtil getDeviceScreenWidth];
-    self.backSystemInfoModel.message.screenHeight = [JSBSystemInfoUtil getDeviceScreenHeight];
-    self.backSystemInfoModel.message.windowWidth = _contentWebView.frame.size.width;
-    self.backSystemInfoModel.message.windowHeight = _contentWebView.frame.size.height;
-    self.backSystemInfoModel.message.language = [JSBSystemInfoUtil getDeviceLanguage];
-    self.backSystemInfoModel.message.system = [JSBSystemInfoUtil getSystemVersion];
-    self.backSystemInfoModel.message.statusBarHeight = 20;
-    self.backSystemInfoModel.message.albumAuthorized = [JSBSystemInfoUtil getPhotoLibrary];
-    self.backSystemInfoModel.message.cameraAuthorized = [JSBSystemInfoUtil getCamera];
-    self.backSystemInfoModel.message.locationAuthorized = [JSBSystemInfoUtil getLocation];
-    self.backSystemInfoModel.message.microphoneAuthorized = [JSBSystemInfoUtil getMicrophone];
-    self.backSystemInfoModel.message.notificationAuthorized = [utils checkCurrentNotificationStatus];
-    self.backSystemInfoModel.message.locationEnabled = [JSBSystemInfoUtil getGPSEnabled];
-    self.backSystemInfoModel.message.wifiEnabled = [JSBSystemInfoUtil getWiFiEnabled];
-
-    [self toJSCallBackStr:_backSystemInfoModel];
-}
-
 /// JSBridge核心方法
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     ///获取调用模块类型
@@ -129,26 +103,38 @@ const NSArray *___JSBModuleType;
     NSString *typeStr = [messageDic objectForKey:@"type"];
     self.callBackIDStr = [messageDic objectForKey:@"callbackId"];
     if ([message.name isEqualToString:@"JSObject"]) {
-        switch (cJSBModuleTypeEnum(typeStr)) {
-            case getSystemInfo:
-                [self getSystemInfoWithDictionary:messageDic];
-                break;
-            case showModal:
-                [self showModal:messageDic];
-                break;
-            case webviewConnect:
-                [self getWebviewConnect:messageDic];
-                break;
-            case webviewBack:
-                [self postWebviewBack:messageDic];
-                break;
-            case downLoad:
-                [self addDownloadTask:messageDic];
-                break;
-            case downLoadNow:
-                [self downloadTaskSituation:1000];
-                break;
+        [self addObserver:self forKeyPath:@"jsCallBackStr" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+        JSBBaseModule *concreteModule = [JSBModulesFactory createConcreteModule:typeStr];
+        id model = [concreteModule performModuleMethodWithDictionary:messageDic];
+        if ([typeStr isEqual:@"getSystemInfo"]) {
+            JSBBackSystemInfoModel *backSystemInfoModel = (JSBBackSystemInfoModel *)model;
+            backSystemInfoModel.message.bluetoothEnabled = _bluetoothEnabled;
+            backSystemInfoModel.message.windowWidth = _contentWebView.frame.size.width;
+            backSystemInfoModel.message.windowHeight = _contentWebView.frame.size.height;
+            [self toJSCallBackStr:backSystemInfoModel];
+        } else {
+            [self toJSCallBackStr:model];
         }
+//        switch (cJSBModuleTypeEnum(typeStr)) {
+//            case getSystemInfo:
+//                [self getSystemInfoWithDictionary:messageDic];
+//                break;
+//            case showModal:
+//                [self showModal:messageDic];
+//                break;
+//            case webviewConnect:
+//                [self getWebviewConnect:messageDic];
+//                break;
+//            case webviewBack:
+//                [self postWebviewBack:messageDic];
+//                break;
+//            case downLoad:
+//                [self addDownloadTask:messageDic];
+//                break;
+//            case downLoadNow:
+//                [self downloadTaskSituation:1000];
+//                break;
+//        }
     }
 }
 
@@ -156,10 +142,12 @@ const NSArray *___JSBModuleType;
 - (void)centralManagerDidUpdateState:(nonnull CBCentralManager *)central {
     if (_bluetoothManager.state == CBManagerStatePoweredOn) {
         NSLog(@"蓝牙开着");
-        self.backSystemInfoModel.message.bluetoothEnabled = @"true";
+//        self.backSystemInfoModel.message.bluetoothEnabled = @"true";
+        self.bluetoothEnabled = @"true";
     } else {
         NSLog(@"蓝牙关着");
-        self.backSystemInfoModel.message.bluetoothEnabled = @"false";
+//        self.backSystemInfoModel.message.bluetoothEnabled = @"false";
+        self.bluetoothEnabled = @"false";
     }
 }
 

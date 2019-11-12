@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "JSBBaseModule.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSBSystemInfoUtil : NSObject
+@interface JSBSystemInfoUtil : JSBBaseModule
 
 /// 获取iPhone名称
 + (NSString *)getiPhoneName;
