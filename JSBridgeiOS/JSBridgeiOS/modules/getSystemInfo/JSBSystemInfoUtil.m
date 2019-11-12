@@ -8,6 +8,8 @@
 
 #import "JSBSystemInfoUtil.h"
 #import "sys/utsname.h"
+#import "JSBBackSystemInfoModel.h"
+#import "JSBRequestSystemInfoModel.h"
 #import <ifaddrs.h>
 #import <arpa/inet.h>
 #import <mach/mach.h>
@@ -16,7 +18,40 @@
 #import <CoreLocation/CLLocationManager.h>
 #import <UserNotifications/UserNotifications.h>
 
+@interface JSBSystemInfoUtil()
+@property (nonatomic, strong) JSBBackSystemInfoModel *backSystemInfoModel;
+@end
+
 @implementation JSBSystemInfoUtil
+
+- (id)performModuleMethodWithDictionary:(NSDictionary *)messageDictionary {
+    self.backSystemInfoModel = [[JSBBackSystemInfoModel alloc] init];
+    self.backSystemInfoModel.message = [[JSBBackSystemInfoMessageModel alloc] init];
+    JSBRequestSystemInfoModel *requestSystemInfoModel = [[JSBRequestSystemInfoModel alloc] initWithDictionary:messageDictionary error:nil];
+    JSBSystemInfoUtil *utils = [JSBSystemInfoUtil new];
+    self.backSystemInfoModel.style = @"1";
+    self.backSystemInfoModel.callbackId = requestSystemInfoModel.callbackId;
+    self.backSystemInfoModel.message.brand = @"iPhone";
+    self.backSystemInfoModel.message.model = [JSBSystemInfoUtil getDeviceName];
+    self.backSystemInfoModel.message.pixelRatio = [JSBSystemInfoUtil getPixelScale];
+    self.backSystemInfoModel.message.screenWidth = [JSBSystemInfoUtil getDeviceScreenWidth];
+    self.backSystemInfoModel.message.screenHeight = [JSBSystemInfoUtil getDeviceScreenHeight];
+    //FIXME:这里设置默认值，在controller中修改
+    self.backSystemInfoModel.message.windowWidth = 0;
+    self.backSystemInfoModel.message.windowHeight = 0;
+    self.backSystemInfoModel.message.language = [JSBSystemInfoUtil getDeviceLanguage];
+    self.backSystemInfoModel.message.system = [JSBSystemInfoUtil getSystemVersion];
+    self.backSystemInfoModel.message.statusBarHeight = 20;
+    self.backSystemInfoModel.message.albumAuthorized = [JSBSystemInfoUtil getPhotoLibrary];
+    self.backSystemInfoModel.message.cameraAuthorized = [JSBSystemInfoUtil getCamera];
+    self.backSystemInfoModel.message.locationAuthorized = [JSBSystemInfoUtil getLocation];
+    self.backSystemInfoModel.message.microphoneAuthorized = [JSBSystemInfoUtil getMicrophone];
+    self.backSystemInfoModel.message.notificationAuthorized = [utils checkCurrentNotificationStatus];
+    self.backSystemInfoModel.message.locationEnabled = [JSBSystemInfoUtil getGPSEnabled];
+    self.backSystemInfoModel.message.wifiEnabled = [JSBSystemInfoUtil getWiFiEnabled];
+    
+    return _backSystemInfoModel;
+}
 
 /// 获取iPhone名称
 + (NSString *)getiPhoneName {
